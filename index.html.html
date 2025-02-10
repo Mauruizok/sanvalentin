@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Querés ser mi San Valentín?</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            color: #e63946;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #6d6875;
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .btn {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #e63946;
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: #ff6b6b;
+            font-size: 24px;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        .image-container {
+            margin: 20px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .btn {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Querés ser mi San Valentín y ver pelis todo el día? Prometo no demorar buscándolas ❤️</h1>
+    <div class="image-container">
+        <img src="https://imgur.com/nloYFV4.png" alt="Pareja feliz">
+    </div>
+    <p>De verdad no sabía qué era y a veces por vago no me pongo a informarme. Perdón por ser así, voy a tratar de ser más atento a estas cosas que te gustan. Sos la persona más especial para mí y me encantaría celebrar este día con vos.</p>
+    <button class="btn" onclick="respuesta('¡Sabía que dirías que sí! 😍')">Sí</button>
+    <button class="btn" onclick="respuesta('¡No había otra opción! ❤️')">Obvio que sí</button>
+
+    <div class="image-container">
+        <img src="https://imgur.com/9NXjDwN.png" alt="Ramo de flores">
+    </div>
+
+    <div class="image-container">
+        <img src="https://imgur.com/kHwTU6k.png" alt="Otra imagen especial">
+    </div>
+
+    <div class="hearts" id="hearts"></div>
+
+    <script>
+        function respuesta(mensaje) {
+            alert(mensaje);
+        }
+
+        // Generar corazones flotantes con mayor intervalo de tiempo
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.innerHTML = '❤️';
+            document.getElementById('hearts').appendChild(heart);
+
+            setTimeout(() => heart.remove(), 5000);
+        }, 1000);  // Aumenté el intervalo a 1000ms (1 segundo)
+    </script>
+</body>
+</html>
